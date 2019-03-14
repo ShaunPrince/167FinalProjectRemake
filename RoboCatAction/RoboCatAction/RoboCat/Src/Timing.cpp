@@ -32,24 +32,33 @@ Timing::Timing()
 #endif
 }
 
-void Timing::Update()
+int Timing::Update()
 {
+	int fixedSteps = 0;
 
 	double currentTime = GetTime();
 
-    mDeltaTime = ( float ) ( currentTime - mLastFrameStartTime );
+	mDeltaTime = (float)(currentTime - mLastFrameStartTime);
+
+	accumulator += mDeltaTime;
 
 	//frame lock at 60fps
-	while( mDeltaTime < kDesiredFrameTime )
+	while (accumulator >= kDesiredFrameTime)
 	{
-		currentTime = GetTime();
+		//currentTime = GetTime();
 
-		mDeltaTime = (float)( currentTime - mLastFrameStartTime );
+		//mDeltaTime = (float)( currentTime - mLastFrameStartTime );
+
+		accumulator -= kDesiredFrameTime;
+
+		mFixedSteps += 1;
+		fixedSteps += 1;
 	}
-	
-	mLastFrameStartTime = currentTime;
-	mFrameStartTimef = static_cast< float > ( mLastFrameStartTime );
 
+	mLastFrameStartTime = currentTime;
+	mFrameStartTimef = static_cast<float> (mLastFrameStartTime);
+
+	return fixedSteps;
 }
 
 double Timing::GetTime() const

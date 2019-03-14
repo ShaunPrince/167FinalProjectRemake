@@ -46,8 +46,8 @@ void RoboCatServer::Update()
 
 void RoboCatServer::HandleShooting()
 {
-	float time = Timing::sInstance.GetFrameStartTime();
-	if( mIsShooting && Timing::sInstance.GetFrameStartTime() > mTimeOfNextShot )
+	float time = Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps());
+	if( mIsShooting && Timing::sInstance.GetFixedSteps() > Timing::sInstance.TimeToFrame(mTimeOfNextShot) )
 	{
 		//not exact, but okay
 		mTimeOfNextShot = time + mTimeBetweenShots;

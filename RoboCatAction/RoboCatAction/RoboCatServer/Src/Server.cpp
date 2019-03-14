@@ -99,7 +99,7 @@ void Server::DoFrame()
 	}
 	else
 	{
-		timeSinceLastStep += Timing::sInstance.GetDeltaTime();
+		timeSinceLastStep += Timing::sInstance.GetFixedFrame();
 	}
 	//NetworkManagerServer::sInstance->SendOutgoingPackets();
 

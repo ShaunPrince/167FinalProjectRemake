@@ -97,7 +97,7 @@ void Yarn::InitFromShooter( RoboCat* inShooter )
 void Yarn::Update()
 {
 	
-	float deltaTime = Timing::sInstance.GetDeltaTime();
+	float deltaTime = Timing::sInstance.GetFixedFrame();
 
 	SetLocation( GetLocation() + mVelocity * deltaTime );
 	

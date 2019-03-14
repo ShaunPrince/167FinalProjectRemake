@@ -65,9 +65,14 @@ int Engine::DoRunLoop()
 		}
 		else
 		{
-			Timing::sInstance.Update();
+			int TimeStep = Timing::sInstance.Update();
 
-			DoFrame();
+			//float TimeStep = Timing::sInstance.GetFixedSteps();
+
+			while (TimeStep > 0) {
+				DoFrame();
+				TimeStep -= 1;
+			}
 		}
 	}
 

@@ -4,7 +4,7 @@
 YarnServer::YarnServer()
 {
 	//yarn lives a second...
-	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 1.f;
+	mTimeToDie = Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps()) + 1.f;
 }
 
 void YarnServer::HandleDying()
@@ -17,7 +17,7 @@ void YarnServer::Update()
 {
 	Yarn::Update();
 
-	if( Timing::sInstance.GetFrameStartTime() > mTimeToDie )
+	if( Timing::sInstance.GetFixedSteps() > Timing::sInstance.TimeToFrame(mTimeToDie) )
 	{
 		SetDoesWantToDie( true );
 	}
