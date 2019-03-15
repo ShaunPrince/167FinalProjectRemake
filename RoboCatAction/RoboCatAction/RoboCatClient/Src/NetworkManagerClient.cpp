@@ -120,7 +120,7 @@ void NetworkManagerClient::ReadLastMoveProcessedOnServerTimestamp( InputMemoryBi
 	{
 		inInputStream.Read( mLastMoveProcessedByServerTimestamp );
 
-		float rtt = Timing::sInstance.GetFrameStartTime() - mLastMoveProcessedByServerTimestamp;
+		float rtt = Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps()) - mLastMoveProcessedByServerTimestamp;
 		mLastRoundTripTime = rtt;
 		mAvgRoundTripTime.Update( rtt );
 

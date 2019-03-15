@@ -96,12 +96,12 @@ InputManager::InputManager() :
 
 const Move& InputManager::SampleInputAsMove()
 {
-	return mMoveList.AddMove( GetState(), Timing::sInstance.GetFrameStartTime() );
+	return mMoveList.AddMove( GetState(), Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps()) );
 }
 
 bool InputManager::IsTimeToSampleInput()
 {
-	float time = Timing::sInstance.GetFrameStartTime();
+	float time = Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps());
 	if( time > mNextTimeToSampleInput )
 	{
 		mNextTimeToSampleInput = mNextTimeToSampleInput + kTimeBetweenInputSamples;
