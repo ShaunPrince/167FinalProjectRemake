@@ -12,7 +12,8 @@ Controls:
 Goal:
 	Collect the most mice points (including the rare black mice which
 				are worth 10x the points)
-	Use the yarn you leave behind (Does 3 dmg) to gate off enemy players, less
+	Use the yarn you leave behind (Does 3 dmg) (better
+	remember which ones are yours) to gate off enemy players, less
 	they risk dying and giving you free reign over the remaining mice.
 	
 
