@@ -101,11 +101,8 @@ void Yarn::Update()
 	float deltaTime = Timing::sInstance.GetFixedFrame();
 
 	//SetLocation( GetLocation() + mVelocity * deltaTime );
-	if (!isLargeYarn())
-	{
-		SetScale(GetScale() * 1.001f);
-		SetCollisionRadius(GetCollisionRadius() * 1.001f);
-	}
+	SetScale(GetScale() * 1.0008f);
+	SetCollisionRadius(GetCollisionRadius() * 1.0008f);
 
 	//we'll let the cats handle the collisions
 }

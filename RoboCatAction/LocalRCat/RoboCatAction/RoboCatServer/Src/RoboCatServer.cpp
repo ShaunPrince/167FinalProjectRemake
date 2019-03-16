@@ -3,7 +3,7 @@
 RoboCatServer::RoboCatServer() :
 	mCatControlType( ESCT_Human ),
 	mTimeOfNextShot( 0.f ),
-	mTimeBetweenShots( 0.2f )
+	mTimeBetweenShots( 1.1f )
 {}
 
 void RoboCatServer::HandleDying()
@@ -61,7 +61,7 @@ void RoboCatServer::HandleShooting()
 
 void RoboCatServer::TakeDamage( int inDamagingPlayerId )
 {
-	mHealth--;
+	mHealth -= 3;
 	if( mHealth <= 0.f )
 	{
 		//score one for damaging player...

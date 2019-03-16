@@ -38,18 +38,6 @@ namespace
 			ioVariable = 0.f;
 		}
 	}
-
-	inline void UpdateLargeDesireFloatFromKey(EInputAction inInputAction, float& ioVariable)
-	{
-		if (inInputAction == EIA_Pressed)
-		{
-			ioVariable = 10.f;
-		}
-		else if (inInputAction == EIA_Released)
-		{
-			ioVariable = 0.f;
-		}
-	}
 }
 
 void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
@@ -65,10 +53,6 @@ void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 	case 'w':
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredForwardAmount);
 		UpdateDesireVariableFromKey(inInputAction, mCurrentState.mIsShooting);
-		break;
-	case 's':
-		UpdateLargeDesireFloatFromKey(inInputAction, mCurrentState.mDesiredForwardAmount);
-		UpdateDesireVariableFromKey(inInputAction, mCurrentState.mIsShootingBig);
 		break;
 	/*case 's':
 		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredBackAmount );

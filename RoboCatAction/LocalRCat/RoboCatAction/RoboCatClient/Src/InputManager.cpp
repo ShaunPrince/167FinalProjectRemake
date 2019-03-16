@@ -45,19 +45,14 @@ void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 	switch( inKeyCode )
 	{
 	case 'a':
-		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredLeftAmount );
+		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredLeftAmount);
 		break;
 	case 'd':
-		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredRightAmount );
+		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredRightAmount);
 		break;
 	case 'w':
-		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredForwardAmount );
-		break;
-	case 's':
-		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredBackAmount );
-		break;
-	case 'k':
-		UpdateDesireVariableFromKey( inInputAction, mCurrentState.mIsShooting );
+		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredForwardAmount);
+		UpdateDesireVariableFromKey(inInputAction, mCurrentState.mIsShooting);
 		break;
 	case '+':
 	case '=':

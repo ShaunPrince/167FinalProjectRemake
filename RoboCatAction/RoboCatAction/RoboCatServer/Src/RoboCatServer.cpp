@@ -3,7 +3,7 @@
 RoboCatServer::RoboCatServer() :
 	mCatControlType( ESCT_Human ),
 	mTimeOfNextShot( 0.f ),
-	mTimeBetweenShots( 1.5f )
+	mTimeBetweenShots( 1.1f )
 {}
 
 void RoboCatServer::HandleDying()

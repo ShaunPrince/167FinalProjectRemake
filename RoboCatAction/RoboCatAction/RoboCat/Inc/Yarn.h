@@ -31,10 +31,6 @@ public:
 
 	virtual bool HandleCollisionWithCat( RoboCat* inCat ) override;
 
-	virtual bool isLargeYarn() { return mLargeYarn; }
-
-	virtual void setLargeYarn(bool large) { mLargeYarn = large; }
-
 protected:
 	Yarn();
 
@@ -43,8 +39,6 @@ protected:
 
 	float		mMuzzleSpeed;
 	int			mPlayerId;
-
-	bool		mLargeYarn;
 
 };
 

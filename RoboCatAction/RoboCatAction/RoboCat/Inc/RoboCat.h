@@ -68,8 +68,6 @@ protected:
 
 	bool				mIsShooting;
 
-	bool				mIsShootingBig;
-
 
 
 };
