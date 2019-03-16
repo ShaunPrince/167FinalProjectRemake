@@ -20,7 +20,12 @@ public:
 
 	virtual bool HandleCollisionWithCat( RoboCat* inCat ) override;
 
+	virtual void SetSpecial(bool special) { isSpecial = special; }
+
+	virtual bool IsSpecial() { return isSpecial; }
+
 protected:
 	Mouse();
 
+	bool isSpecial;
 };

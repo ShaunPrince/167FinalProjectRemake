@@ -4,7 +4,7 @@
 YarnServer::YarnServer()
 {
 	//yarn lives a second...
-	mTimeToDie = Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps()) + 1.f;
+	mTimeToDie = Timing::sInstance.FrameToTime(Timing::sInstance.GetFixedSteps()) + 25.f;
 }
 
 void YarnServer::HandleDying()
