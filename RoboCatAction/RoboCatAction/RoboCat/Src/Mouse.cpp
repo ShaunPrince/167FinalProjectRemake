@@ -3,7 +3,15 @@
 Mouse::Mouse()
 {
 	SetScale( GetScale() * 0.5f );
-	SetCollisionRadius( 0.25f );
+	SetCollisionRadius(0.25f);
+	SetSpecial(false);
+	int num = rand() % 100;
+	if (num < 10)
+	{
+		Vector3 *color = new Vector3(255.f, 223.f, 0.f);
+		SetColor(*color);
+		SetSpecial(true);
+	}
 }
 
 

@@ -32,7 +32,9 @@ void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
 	mThrustDir = inputForwardDelta;
 
 
-	mIsShooting = inInputState.IsShooting(); 
+	mIsShooting = inInputState.IsShooting();
+
+	mIsShootingBig = inInputState.IsShootingBig();
 
 }
 

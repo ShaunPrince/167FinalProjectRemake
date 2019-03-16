@@ -1,9 +1,9 @@
 #include <RoboCatPCH.h>
 
 Yarn::Yarn() :
-	mMuzzleSpeed( 3.f ),
-	mVelocity( Vector3::Zero ),
-	mPlayerId( 0 )
+	mMuzzleSpeed(0.f),
+	mVelocity(Vector3::Zero),
+	mPlayerId(0)
 {
 	SetScale( GetScale() * 0.25f );
 	SetCollisionRadius( 0.125f );
@@ -87,11 +87,12 @@ void Yarn::InitFromShooter( RoboCat* inShooter )
 	SetColor( inShooter->GetColor() );
 	SetPlayerId( inShooter->GetPlayerId() );
 
-	Vector3 forward = inShooter->GetForwardVector();
-	SetVelocity( inShooter->GetVelocity() + forward * mMuzzleSpeed );
+	//Vector3 forward = inShooter->GetForwardVector();
+	//SetVelocity( inShooter->GetVelocity() + forward * mMuzzleSpeed );
 	SetLocation( inShooter->GetLocation() /* + forward * 0.55f */ );
 
 	SetRotation( inShooter->GetRotation() );
+
 }
 
 void Yarn::Update()
@@ -99,8 +100,12 @@ void Yarn::Update()
 	
 	float deltaTime = Timing::sInstance.GetFixedFrame();
 
-	SetLocation( GetLocation() + mVelocity * deltaTime );
-	
+	//SetLocation( GetLocation() + mVelocity * deltaTime );
+	if (!isLargeYarn())
+	{
+		SetScale(GetScale() * 1.001f);
+		SetCollisionRadius(GetCollisionRadius() * 1.001f);
+	}
 
 	//we'll let the cats handle the collisions
 }
