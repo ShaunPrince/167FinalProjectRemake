@@ -36,9 +36,10 @@ void RoboCatServer::Update()
 
 	HandleShooting();
 
-	if( !RoboMath::Is2DVectorEqual( oldLocation, GetLocation() ) ||
-		!RoboMath::Is2DVectorEqual( oldVelocity, GetVelocity() ) ||
-		oldRotation != GetRotation() )
+	//if( !RoboMath::Is2DVectorEqual( oldLocation, GetLocation() ) ||
+	//	!RoboMath::Is2DVectorEqual( oldVelocity, GetVelocity() ) ||
+	//	oldRotation != GetRotation() )
+	if(true)
 	{
 		NetworkManagerServer::sInstance->SetStateDirty( GetNetworkId(), ECRS_Pose );
 	}

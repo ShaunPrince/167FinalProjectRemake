@@ -36,6 +36,9 @@ public:
 
 	Vector3 newNewVelocity;
 	Vector3 oldVelocity;
+	float timeOfUpdateFirst;
+	float timeOfUpdateSecond;
+	float deltaUpdateTime;
 
 
 

@@ -29,8 +29,10 @@ void RoboCatClient::Update()
 
 	//for now, we don't simulate any movement on the client side
 	//we only move when the server tells us to move
-	float timeStep = .3f;
-	if (timeElapsedLocal >= timeStep)
+	float timeStep = .2f;
+
+
+	if (timeElapsedLocal >= deltaUpdateTime)
 	{
 		SetRotation(newNewRotation);
 		SetVelocity(newNewVelocity);
@@ -38,14 +40,15 @@ void RoboCatClient::Update()
 		oldLocation = newNewLocation;
 		oldRotation = newNewRotation;
 		oldVelocity = newNewVelocity;
-		timeElapsedLocal = 0.f;
+		timeElapsedLocal -= deltaUpdateTime;
 	}
 	else
 	{
-		SetRotation(oldRotation + ((newNewRotation - oldRotation) * (timeElapsedLocal / timeStep)));
-		SetVelocity(oldVelocity + ((newNewVelocity - oldVelocity) * (timeElapsedLocal / timeStep)));
-		SetLocation(oldLocation + ((newNewLocation - oldLocation) * (timeElapsedLocal / timeStep)));
+		SetRotation(oldRotation + ((newNewRotation - oldRotation) * (timeElapsedLocal / deltaUpdateTime  )));
+		SetVelocity(oldVelocity + ((newNewVelocity - oldVelocity) * (timeElapsedLocal / deltaUpdateTime )));
+		SetLocation(oldLocation + ((newNewLocation - oldLocation) * (timeElapsedLocal / deltaUpdateTime  )));
 	}
+
 
 }
 
@@ -71,6 +74,28 @@ void RoboCatClient::Read( InputMemoryBitStream& inInputStream )
 	float replicatedRotation;
 	Vector3 replicatedLocation;
 	Vector3 replicatedVelocity;
+
+	if (timeOfUpdateFirst == 0)
+	{
+		if (timeOfUpdateSecond == 0)
+		{
+			timeOfUpdateSecond = Timing::sInstance.GetTimef();
+			deltaUpdateTime = 0;
+		}
+		else
+		{
+			timeOfUpdateFirst = Timing::sInstance.GetTimef();
+			deltaUpdateTime = 0;
+		}
+	}
+	else
+	{
+		deltaUpdateTime = timeOfUpdateSecond - timeOfUpdateFirst;
+		timeOfUpdateFirst = timeOfUpdateSecond;
+		timeOfUpdateSecond = Timing::sInstance.GetTimef();
+	}
+
+	
 
 	inInputStream.Read( stateBit );
 	if( stateBit )

@@ -14,7 +14,10 @@ RoboCat::RoboCat() :
 	mThrustDir( 0.f ),
 	mPlayerId( 0 ),
 	mIsShooting( false ),
-	mHealth( 10 )
+	mHealth( 10 ),
+	timeOfUpdateFirst(0),
+	timeOfUpdateSecond(0),
+	deltaUpdateTime(0)
 {
 	SetCollisionRadius( 0.5f );
 }

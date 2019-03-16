@@ -31,7 +31,7 @@ Server::Server()
 	NetworkManagerServer::sInstance->SetSimulatedLatency( latency );
 
 	tickCount = 0;
-	timePerTick = .3f;
+	timePerTick = .2f;
 	timeSinceLastTick = timePerTick;
 }
 
@@ -98,7 +98,8 @@ void Server::DoFrame()
 		++tickCount;
 		NetworkManagerServer::sInstance->SendOutgoingPackets();
 		timeSinceLastTick = timeSinceLastTick - timePerTick;
-	
+		//timeSinceLastTick = 0;
+
 	}
 	else
 	{
